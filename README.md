@@ -24,6 +24,6 @@ Email: dennis.njeru@student.moringaschool.com
 LinkedIn: https://www.linkedin.com/in/dennis-gitonga-227246193 
 
 ### License
-[GNU License](./LICENSE)
+[GNU GENERAL PUBLIC LICENSE v3.0](./LICENSE)
 
-Copyright (c) [2021] **Dennis Njeru**
+Copyright (c) [2022] **Dennis Njeru**
