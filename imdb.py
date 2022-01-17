@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import Select
 from bs4 import BeautifulSoup
 import requests
 
+#Selenium Section
 
 #getting chrome browser
 driver = webdriver.Chrome(executable_path='C:\webdrivers\chromedriver.exe')
@@ -77,6 +78,29 @@ submit.click()
 
 # current
 current_url = driver.current_url
+
+################################################
+#Beautiful Soup Section
+
+#get request
+response = requests.get(current_url)
+
+#Soup Object
+soup = BeautifulSoup(response.content, 'html.parser')
+
+#result items (starting point)
+list_items = soup.find_all('div', {'class':'lister-item'})
+
+#list comprehension
+movie_title = [result.find('h3').find('a').get_text() for result in list_items]
+year = [result.find('h3').find('span', {'class':'lister-item-year'}).get_text().replace('(', '').replace(')', '') for result in list_items]
+duration = [result.find('span', {'class':'runtime'}).get_text() for result in list_items]
+genre = [result.find('span', {'class':'genre'}).get_text().strip() for result in list_items]
+rating = [result.find('div', {'class':'ratings-imdb-rating'}).get_text().strip() for result in list_items]
+
+#create dataframe
+imdb_df = pd.DataFrame({'Movie Title': movie_title, 'Year': year,
+                        'Duration':duration, 'Genre':genre, 'Rating':rating})
 
 
 
