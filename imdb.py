@@ -103,4 +103,7 @@ imdb_df = pd.DataFrame({'Movie Title': movie_title, 'Year': year,
                         'Duration':duration, 'Genre':genre, 'Rating':rating})
 
 
+#output in excel
+imdb_df.to_excel('imdb_multiple_pages.xlsx', index=False)
+
 
